@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import houseRepository from "../repositories/houseRepository";
-import { HouseRequestGet, HouseRequestIndex } from "../validators/house";
+import { } from "../validators/house/index";
 
 class HouseController {
 
   async index(req: HouseRequestIndex, res: Response) {
 
-    const { originalLat, originalLng } = req.dataValidated
+    const { originalLat, originalLng } = req.body
 
     const distanceToAdd = 10;
 
