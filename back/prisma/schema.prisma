@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum STATUS {
+  DONE
+  OPEN
+}
+
+enum TYPETOKEN {
+  REFRESH
+  TOKEN_FORGOT_PASSWORD
+  EMAIL_FORGOT_PASSWORD
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
+  name       String
+  created_at DateTime @default(now())
+  avatar     String?
+
+  House       House[]
+  Appointment Appointment[]
+  usersToken  UserTokens[]
+}
+
+model House {
+  id             String   @id @default(uuid())
+  created_at     DateTime @default(now())
+  title          String
+  longitude      Decimal
+  latitude       Decimal
+  address        String   @db.VarChar(60)
+  buy_price      Float
+  rent_price     Float
+  description    String   @db.VarChar(300)
+  state          String
+  city           String
+  address_number Int
+
+  owner    User   @relation(fields: [owner_id], references: [id])
+  owner_id String
+
+  house_room  HouseRoom[]
+  appointment Appointment[]
+
+  contact Contact[]
+
+  @@map("users")
+}
+
+model Contact {
+  id    String @id @default(uuid())
+  type  String
+  value String
+
+  house    House  @relation(fields: [house_id], references: [id])
+  house_id String
+
+  @@map("contacts")
+}
+
+model Room {
+  id   String @id @default(uuid())
+  name String
+
+  house_rooms HouseRoom[]
+
+  @@map("rooms")
+}
+
+model HouseRoom {
+  quantity Int
+
+  house    House  @relation(fields: [house_id], references: [id])
+  house_id String
+  room     Room   @relation(fields: [room_id], references: [id])
+  room_id  String
+
+  @@id([house_id, room_id])
+  @@map("house_rooms")
+}
+
+model Appointment {
+  created_at DateTime @default(now())
+  status     STATUS   @default(OPEN)
+
+  house    House  @relation(fields: [house_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  house_id String
+  owner    User   @relation(fields: [owner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  owner_id String
+
+  @@id([house_id, owner_id])
+  @@map("appointments")
+}
+
+model UserTokens {
+  id           String    @id @default(uuid())
+  token        String
+  validated_at DateTime?
+  created_at   DateTime  @default(now())
+  type_token   TYPETOKEN
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("user_tokens")
+}
