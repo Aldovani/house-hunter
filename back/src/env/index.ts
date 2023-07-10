@@ -4,6 +4,10 @@ import { z } from 'zod'
 const envSchema = z.object({
   PORT: z.coerce.number().default(3333),
   DATABASE_URL: z.string(),
+  MAIL_TRAP_HOST: z.string(),
+  MAIL_TRAP_PORT: z.coerce.number(),
+  MAIL_TRAP_AUTH_USER: z.string(),
+  MAIL_TRAP_AUTH_PASS: z.string(),
   NODE_ENV: z.enum(['test', 'development', 'production']).default('production'),
 })
 
