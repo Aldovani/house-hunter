@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify'
-import { userRoutes } from './users.router'
+import { usersRoutes } from './users.router'
 
 export async function routes(app: FastifyInstance) {
-  app.register(userRoutes, { prefix: 'users' })
+  app.register(usersRoutes, { prefix: 'users' })
 }

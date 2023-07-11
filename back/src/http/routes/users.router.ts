@@ -6,6 +6,9 @@ import { ForgotPasswordController } from '../controllers/users/forgotPassword'
 import { VerifyCodeForgotPasswordController } from '../controllers/users/vereifyCodeForgotPassword'
 import { ChangePasswordController } from '../controllers/users/changePassword'
 import { UpdateAvatarController } from '../controllers/users/updateAvatar'
+import { AuthenticateController } from '../controllers/users/authenticate'
+import { ensuredAuth } from '../middlewares/ensuredAuth'
+import { RefreshTokenController } from '../controllers/users/refreshToken'
 
 const createUserController = new CreateUserController()
 const updateUserController = new UpdateUserController()
@@ -15,13 +18,19 @@ const changePasswordController = new ChangePasswordController()
 const updateAvatarController = new UpdateAvatarController()
 const verifyCodeForgotPasswordController =
   new VerifyCodeForgotPasswordController()
+const authenticateController = new AuthenticateController()
+const refreshTokenController = new RefreshTokenController()
 
-export async function userRoutes(app: FastifyInstance) {
+export async function usersRoutes(app: FastifyInstance) {
   app.post('/', createUserController.handle)
-  app.put('/', updateUserController.handle)
-  app.get('/:id', getUserProfileController.handle)
+  app.put('/', { onRequest: [ensuredAuth] }, updateUserController.handle)
+  app.get('/', { onRequest: [ensuredAuth] }, getUserProfileController.handle)
 
-  app.put('/avatar', updateAvatarController.handle)
+  app.put(
+    '/avatar',
+    { onRequest: [ensuredAuth] },
+    updateAvatarController.handle,
+  )
 
   app.post('/forgot-password', forgotPasswordController.handle)
   app.post(
@@ -29,4 +38,7 @@ export async function userRoutes(app: FastifyInstance) {
     changePasswordController.handle,
   )
   app.post('/forgot-password/verify', verifyCodeForgotPasswordController.handle)
+
+  app.post('/auth', authenticateController.handle)
+  app.patch('/token/refresh', refreshTokenController.handle)
 }

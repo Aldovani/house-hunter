@@ -33,6 +33,9 @@ export class PrismaUserTokensRepository implements IUserTokensRepository {
       where: {
         token,
         type_token: type,
+        validated_at: {
+          equals: null,
+        },
       },
     })
   }
