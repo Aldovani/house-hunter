@@ -27,8 +27,11 @@ export class UpdateAvatarUseCase {
 
     const fileName = await this.storageProvider.save(file, 'avatar')
 
-    await this.usersRepository.updateAvatarById(userId, fileName)
+    const userUpdated = await this.usersRepository.updateAvatarById(
+      userId,
+      fileName,
+    )
 
-    return { user, file }
+    return { user: userUpdated, file }
   }
 }

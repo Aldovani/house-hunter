@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { User } from '@prisma/client'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 interface GetUserProfileUseCaseRequest {
   userId: string
@@ -23,7 +24,7 @@ export class GetUserProfileUseCase {
     const user = await this.usersRepository.findById(userId)
 
     if (!user) {
-      throw new Error()
+      throw new ResourceNotFoundError()
     }
 
     const userWithOutPassword = {

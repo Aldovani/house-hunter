@@ -3,6 +3,7 @@ import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { IUserTokensRepository } from '../../repositories/IUserTokensRepository'
 import { IMailerProvider } from '../../shared/provider/email/IMailProvider'
 import { inject, injectable } from 'tsyringe'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 interface ForgotPasswordUseCaseRequest {
   email: string
@@ -29,7 +30,7 @@ export class ForgotPasswordUseCase {
     const user = await this.usersRepository.findByEmail(email)
 
     if (!user) {
-      throw new Error()
+      throw new ResourceNotFoundError()
     }
 
     const code = (Math.random() + 1).toString().slice(2, 8)

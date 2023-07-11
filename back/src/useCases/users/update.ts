@@ -2,6 +2,8 @@ import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { inject, injectable } from 'tsyringe'
 import { User } from '@prisma/client'
 import { hash } from 'bcrypt'
+import { EmailAlreadyExistsError } from '../../shared/errors/EmailAlreadyExistsError'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 interface UpdateUserUseCaseRequest {
   userId: string
@@ -26,7 +28,7 @@ export class UpdateUserUseCase {
     const user = await this.usersRepository.findById(userId)
 
     if (!user) {
-      throw new Error()
+      throw new ResourceNotFoundError()
     }
 
     const isUpdateEmailDifferentUserEqual = user.email !== userUpdate.email
@@ -36,7 +38,7 @@ export class UpdateUserUseCase {
         userUpdate.email,
       )
       if (emailAlreadyExists) {
-        throw new Error('Email already exists')
+        throw new EmailAlreadyExistsError()
       }
     }
 

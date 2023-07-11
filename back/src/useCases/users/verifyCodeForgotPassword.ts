@@ -3,6 +3,9 @@ import { IUserTokensRepository } from '../../repositories/IUserTokensRepository'
 import { randomUUID } from 'crypto'
 import dayjs from 'dayjs'
 import { inject, injectable } from 'tsyringe'
+import { InvalidCodeError } from '../../shared/errors/InvalidCodeError'
+import { ExpiredTokenError } from '../../shared/errors/ExpiredTokenError'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 interface VerifyCodeForgotPasswordUseCaseRequest {
   code: string
@@ -23,7 +26,7 @@ export class VerifyCodeForgotPasswordUseCase {
     )
 
     if (!tokenExists) {
-      throw new Error()
+      throw new ResourceNotFoundError()
     }
 
     const compareDateInHours = dayjs(new Date()).diff(
@@ -33,13 +36,13 @@ export class VerifyCodeForgotPasswordUseCase {
 
     if (compareDateInHours > 60) {
       this.userTokensRepository.deleteTokenById(tokenExists.id)
-      throw new Error()
+      throw new ExpiredTokenError()
     }
 
     const isValidCode = await compare(code, tokenExists.token)
 
     if (!isValidCode) {
-      throw new Error()
+      throw new InvalidCodeError()
     }
 
     const tokenForgotPassword = randomUUID()

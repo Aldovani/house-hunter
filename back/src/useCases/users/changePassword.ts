@@ -4,6 +4,8 @@ import { hash } from 'bcrypt'
 import { IUserTokensRepository } from '../../repositories/IUserTokensRepository'
 import { User, UserTokens } from '@prisma/client'
 import dayjs from 'dayjs'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
+import { ExpiredTokenError } from '../../shared/errors/ExpiredTokenError'
 
 interface ChangePasswordUseCaseRequest {
   token: string
@@ -34,7 +36,7 @@ export class ChangePasswordUseCase {
     )
 
     if (!tokenExists) {
-      throw new Error()
+      throw new ResourceNotFoundError()
     }
 
     const compareDateInMinutes = dayjs(new Date()).diff(
@@ -43,7 +45,7 @@ export class ChangePasswordUseCase {
     )
 
     if (compareDateInMinutes > 15) {
-      throw new Error()
+      throw new ExpiredTokenError()
     }
 
     const passwordHashed = await hash(password, 6)

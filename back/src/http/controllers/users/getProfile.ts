@@ -1,22 +1,24 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { container } from 'tsyringe'
-import { z } from 'zod'
 import { GetUserProfileUseCase } from '../../../useCases/users/getProfile'
+import { ResourceNotFoundError } from '../../../shared/errors/ResourceNotFoundError'
 
 export class GetUserProfileController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
-    const getUserProfileParamsSchema = z.object({
-      id: z.string().uuid(),
-    })
-
-    const { id } = getUserProfileParamsSchema.parse(req.params)
+    const { sub } = req.user
 
     const getUserProfileUseCase = container.resolve(GetUserProfileUseCase)
 
-    const { user } = await getUserProfileUseCase.execute({
-      userId: id,
-    })
+    try {
+      const { user } = await getUserProfileUseCase.execute({
+        userId: sub,
+      })
 
-    rep.status(201).send({ user })
+      return rep.status(201).send({ user })
+    } catch (err) {
+      if (err instanceof ResourceNotFoundError) {
+        return rep.status(404).send({ error: err.message })
+      }
+    }
   }
 }

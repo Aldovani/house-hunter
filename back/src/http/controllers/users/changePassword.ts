@@ -2,6 +2,8 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { container } from 'tsyringe'
 import { z } from 'zod'
 import { ChangePasswordUseCase } from '../../../useCases/users/changePassword'
+import { ResourceNotFoundError } from '../../../shared/errors/ResourceNotFoundError'
+import { ExpiredTokenError } from '../../../shared/errors/ExpiredTokenError'
 
 export class ChangePasswordController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
@@ -26,10 +28,18 @@ export class ChangePasswordController {
     const { token } = changePasswordParamsSchema.parse(req.params)
     const { password } = changePasswordBodySchema.parse(req.body)
 
-    const changePasswordUseCase = container.resolve(ChangePasswordUseCase)
+    try {
+      const changePasswordUseCase = container.resolve(ChangePasswordUseCase)
 
-    const { user } = await changePasswordUseCase.execute({ password, token })
+      const { user } = await changePasswordUseCase.execute({ password, token })
 
-    rep.status(201).send({ user })
+      return rep.status(201).send({ user })
+    } catch (err) {
+      if (err instanceof ResourceNotFoundError) {
+        return rep.status(404).send({ error: err.message })
+      } else if (err instanceof ExpiredTokenError) {
+        return rep.status(400).send({ error: err.message })
+      }
+    }
   }
 }

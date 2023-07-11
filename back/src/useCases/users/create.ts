@@ -1,6 +1,7 @@
 import { hash } from 'bcrypt'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { inject, injectable } from 'tsyringe'
+import { EmailAlreadyExistsError } from '../../shared/errors/EmailAlreadyExistsError'
 
 interface CreateUserUseCaseRequest {
   name: string
@@ -19,7 +20,7 @@ export class CreateUserUseCase {
     const emailAlreadyExists = await this.usersRepository.findByEmail(email)
 
     if (emailAlreadyExists) {
-      throw new Error('Email already exists !')
+      throw new EmailAlreadyExistsError()
     }
 
     const password_hash = await hash(password, 6)
