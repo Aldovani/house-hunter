@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { CreateUserUseCase } from './create'
 import { UsersRepositoryInMemory } from '../../repositories/inMemory/usersRepositoryInMemory'
 import { compare } from 'bcrypt'
+import { EmailAlreadyExistsError } from '../../shared/errors/EmailAlreadyExistsError'
 
 let createUserUseCase: CreateUserUseCase
 let usersRepository: UsersRepositoryInMemory
@@ -40,7 +41,7 @@ describe('Create Use Case', () => {
         name: 'Alodvani',
         password: '12345',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(EmailAlreadyExistsError)
   })
 
   it('Should be able to verify the password hashed', async () => {

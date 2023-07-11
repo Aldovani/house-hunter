@@ -2,6 +2,8 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { UsersRepositoryInMemory } from '../../repositories/inMemory/usersRepositoryInMemory'
 import { UpdateUserUseCase } from './update'
 import { compare } from 'bcrypt'
+import { EmailAlreadyExistsError } from '../../shared/errors/EmailAlreadyExistsError'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 let updateUseCase: UpdateUserUseCase
 let usersRepository: UsersRepositoryInMemory
@@ -72,10 +74,10 @@ describe('Update Use Case', () => {
           email: 'dodo@gmail.com',
         },
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(EmailAlreadyExistsError)
   })
 
-  it('Should not be able to update all fields', async () => {
+  it('Should be able to update all fields', async () => {
     const { user } = await updateUseCase.execute({
       userId: userID,
       userUpdate: {
@@ -102,6 +104,6 @@ describe('Update Use Case', () => {
           email: 'dodo@gmail.com',
         },
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

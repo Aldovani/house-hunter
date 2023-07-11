@@ -4,6 +4,9 @@ import { VerifyCodeForgotPasswordUseCase } from './verifyCodeForgotPassword'
 import { ForgotPasswordUseCase } from './forgotPassword'
 import { MailProviderInMemory } from '../../shared/provider/email/inMemory/mailProviderInMemory'
 import { UsersRepositoryInMemory } from '../../repositories/inMemory/usersRepositoryInMemory'
+import { ExpiredTokenError } from '../../shared/errors/ExpiredTokenError'
+import { InvalidCodeError } from '../../shared/errors/InvalidCodeError'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 let verifyCodeForgotPasswordUseCase: VerifyCodeForgotPasswordUseCase
 let userTokensRepository: UserTokensRepositoryInMemory
@@ -58,7 +61,7 @@ describe('Forgot password Use Case', () => {
         code: 'test',
         token: 'teste',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 
   it('should not be able to verify code with invalid code', async () => {
@@ -76,7 +79,7 @@ describe('Forgot password Use Case', () => {
         code: 'test',
         token: forgotToken,
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(InvalidCodeError)
   })
 
   it('should not be able to verify code after 1 hour', async () => {
@@ -97,6 +100,6 @@ describe('Forgot password Use Case', () => {
         code,
         token,
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ExpiredTokenError)
   })
 })

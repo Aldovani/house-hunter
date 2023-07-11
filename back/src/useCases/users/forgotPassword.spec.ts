@@ -3,6 +3,7 @@ import { UsersRepositoryInMemory } from '../../repositories/inMemory/usersReposi
 import { ForgotPasswordUseCase } from './forgotPassword'
 import { UserTokensRepositoryInMemory } from '../../repositories/inMemory/userTokensRepositoryInMemory'
 import { MailProviderInMemory } from '../../shared/provider/email/inMemory/mailProviderInMemory'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 let forgotPasswordUseCase: ForgotPasswordUseCase
 let emailProvider: MailProviderInMemory
@@ -40,6 +41,6 @@ describe('Forgot password Use Case', () => {
       forgotPasswordUseCase.execute({
         email: 'aldovani@gmail.com',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

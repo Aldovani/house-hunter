@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { UsersRepositoryInMemory } from '../../repositories/inMemory/usersRepositoryInMemory'
 import { GetUserProfileUseCase } from './getProfile'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
 
 let getProfileUseCase: GetUserProfileUseCase
 let usersRepository: UsersRepositoryInMemory
@@ -36,6 +37,6 @@ describe('Get Profile Use Case', () => {
       getProfileUseCase.execute({
         userId: 'id-test',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

@@ -3,6 +3,8 @@ import { UsersRepositoryInMemory } from '../../repositories/inMemory/usersReposi
 import { UserTokensRepositoryInMemory } from '../../repositories/inMemory/userTokensRepositoryInMemory'
 import { randomUUID } from 'crypto'
 import { ChangePasswordUseCase } from './changePassword'
+import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError'
+import { ExpiredTokenError } from '../../shared/errors/ExpiredTokenError'
 
 let changePasswordUseCase: ChangePasswordUseCase
 let usersRepository: UsersRepositoryInMemory
@@ -71,7 +73,7 @@ describe('Update Use Case', () => {
         token: 'token-invalid',
         password: '123456789',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 
   it('Should  not be able to update password after 15 minutes', async () => {
@@ -96,6 +98,6 @@ describe('Update Use Case', () => {
         token,
         password: '123456789',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ExpiredTokenError)
   })
 })
