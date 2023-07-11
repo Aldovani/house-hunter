@@ -10,8 +10,8 @@
 
 ## Sessions
 
-- [ ] Deve ser possível se autenticar na aplicação (Email, Senha)
-- [ ] Deve ser possível se autenticar na aplicação com refreshToken
+- [x] Deve ser possível se autenticar na aplicação (Email, Senha)
+- [x] Deve ser possível se autenticar na aplicação com refreshToken
 
 ## House
 
@@ -42,12 +42,13 @@
 # Requisitos Negocio (RN)
 
 - [ ] Um usuário só pode marcar um **AGENDAMENTO** com tres horas de intervalo para outro agendamento
-- [ ] Um usuário não pode se cadastra com email repetido
+- [x] Um usuário não pode se cadastra com email repetido
 - [ ] O usuário deve informar pelo menos o valor da venda ou do aluguel da casa
 - [ ] A casa não pode ser cadastrada sem nenhuma sala
-- [ ] O tempo máximo para recuperar a senha de ser de duas horas
+- [ ] Apenas admins pode cadastra uma sala
+- [x] O tempo máximo para recuperar a senha de ser de duas horas
 
 # Requisitos não funcionais (RNF)
 
-- [ ] utilizar banco de dados relacional
-- [ ] utilizar JWT para se autenticar
+- [x] utilizar banco de dados relacional
+- [x] utilizar JWT para se autenticar
