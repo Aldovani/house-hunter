@@ -22,21 +22,18 @@ const authenticateController = new AuthenticateController()
 const refreshTokenController = new RefreshTokenController()
 
 export async function usersRoutes(app: FastifyInstance) {
-  app.post('/', createUserController.handle)
-  app.put('/', { onRequest: [ensuredAuth] }, updateUserController.handle)
-  app.get('/', { onRequest: [ensuredAuth] }, getUserProfileController.handle)
+  app.post('/users', createUserController.handle)
+  app.put('/users', { onRequest: [ensuredAuth] }, updateUserController.handle)
+  app.get('/me', { onRequest: [ensuredAuth] }, getUserProfileController.handle)
 
   app.put(
-    '/avatar',
+    '/users/avatar',
     { onRequest: [ensuredAuth] },
     updateAvatarController.handle,
   )
 
   app.post('/forgot-password', forgotPasswordController.handle)
-  app.post(
-    '/forgot-password/change/password/:token',
-    changePasswordController.handle,
-  )
+  app.post('/change-password/:token', changePasswordController.handle)
   app.post('/forgot-password/verify', verifyCodeForgotPasswordController.handle)
 
   app.post('/auth', authenticateController.handle)
