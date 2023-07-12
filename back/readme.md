@@ -23,9 +23,9 @@
 
 ## Room
 
-- [ ] Deve ser possível cadastrar uma parte da casa
-- [ ] Deve ser possível editar uma parte da casa
-- [ ] Deve ser possível deletar uma parte da casa
+- [x] Deve ser possível cadastrar uma parte da casa
+- [x] Deve ser possível editar uma parte da casa
+- [x] Deve ser possível deletar uma parte da casa
 
 ## Contact
 
@@ -46,6 +46,7 @@
 - [ ] O usuário deve informar pelo menos o valor da venda ou do aluguel da casa
 - [ ] A casa não pode ser cadastrada sem nenhuma sala
 - [ ] Apenas admins pode cadastra uma sala
+- [ ] Não  deve ser possível cadastra uma sala com o mesmo nome
 - [x] O tempo máximo para recuperar a senha de ser de duas horas
 
 # Requisitos não funcionais (RNF)
