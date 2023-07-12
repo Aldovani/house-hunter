@@ -5,6 +5,8 @@ import { PrismaUsersRepository } from '../../repositories/prisma/prismaUsersRepo
 import '../provider'
 import { IUserTokensRepository } from '../../repositories/IUserTokensRepository'
 import { PrismaUserTokensRepository } from '../../repositories/prisma/prismaUserTokensRepository'
+import { IRoomsRepository } from '../../repositories/IRoomsRepository'
+import { PrismaRoomsRepository } from '../../repositories/prisma/prismaRoomsRepository'
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -14,4 +16,9 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<IUserTokensRepository>(
   'UserTokensRepository',
   PrismaUserTokensRepository,
+)
+
+container.registerSingleton<IRoomsRepository>(
+  'RoomsRepository',
+  PrismaRoomsRepository,
 )
