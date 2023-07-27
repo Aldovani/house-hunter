@@ -18,10 +18,13 @@ export class AuthenticateController {
     try {
       const { user } = await authenticateUseCase.execute({ email, password })
 
-      const token = await rep.accessJwtSign({}, { sign: { sub: user.id } })
+      const token = await rep.accessJwtSign(
+        { role: user.role },
+        { sign: { sub: user.id } },
+      )
 
       const refreshToken = await rep.refreshJwtSign(
-        {},
+        { role: user.role },
         { sign: { sub: user.id, expiresIn: '15d' } },
       )
 

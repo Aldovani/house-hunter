@@ -29,11 +29,12 @@ describe('Forgot password Use Case', () => {
       password: '123456',
     })
 
-    const { token } = await forgotPasswordUseCase.execute({
+    const { id, code } = await forgotPasswordUseCase.execute({
       email: 'aldovani@gmail.com',
     })
 
-    expect(token).toEqual(expect.any(String))
+    expect(id).toEqual(expect.any(String))
+    expect(code).toEqual(expect.any(String))
   })
 
   it('Should no be able to create a new request to email existent', async () => {

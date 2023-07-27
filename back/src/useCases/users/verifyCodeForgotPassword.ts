@@ -9,7 +9,7 @@ import { ResourceNotFoundError } from '../../shared/errors/ResourceNotFoundError
 
 interface VerifyCodeForgotPasswordUseCaseRequest {
   code: string
-  token: string
+  id: string
 }
 
 @injectable()
@@ -19,11 +19,8 @@ export class VerifyCodeForgotPasswordUseCase {
     private userTokensRepository: IUserTokensRepository,
   ) {}
 
-  async execute({ code, token }: VerifyCodeForgotPasswordUseCaseRequest) {
-    const tokenExists = await this.userTokensRepository.findByTokenAndType(
-      token,
-      'EMAIL_FORGOT_PASSWORD',
-    )
+  async execute({ code, id }: VerifyCodeForgotPasswordUseCaseRequest) {
+    const tokenExists = await this.userTokensRepository.findById(id)
 
     if (!tokenExists) {
       throw new ResourceNotFoundError()

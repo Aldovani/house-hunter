@@ -8,21 +8,25 @@ export class UpdateAvatarController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
     const { sub } = req.user
 
-    const upload = await req.file()
+    const upload = req.file
 
     if (!upload) {
       return rep.status(400).send({ error: 'File is required' })
     }
 
-    const mimeTypeRegex = /^(image|video)\/[a-zA-Z]+/
+    if (!upload.filename) {
+      return rep.status(400).send({ error: 'File name  is required' })
+    }
+
+    const mimeTypeRegex = /^(image)\/[a-zA-Z]+/
     const isValidFileFormat = mimeTypeRegex.test(upload.mimetype)
 
     if (!isValidFileFormat) {
-      return rep.status(400).send()
+      return rep.status(400).send({ error: 'File type invalid' })
     }
     const updateAvatarUseCase = container.resolve(UpdateAvatarUseCase)
     const { user } = await updateAvatarUseCase.execute({
-      file: upload,
+      file: upload.filename,
       userId: sub,
     })
 

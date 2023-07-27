@@ -1,11 +1,10 @@
 import { inject, injectable } from 'tsyringe'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { LocalStorageProvider } from '../../shared/provider/storage/implementations/LocalStorageProvider'
-import { MultipartFile } from '@fastify/multipart'
 import { User } from '@prisma/client'
 
 interface UpdateAvatarUseCaseRequest {
-  file: MultipartFile
+  file: string
   userId: string
 }
 

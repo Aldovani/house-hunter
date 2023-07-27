@@ -43,13 +43,13 @@ describe('Forgot password Use Case', () => {
       name: 'Aldovani',
       password: '123456',
     })
-    const { code, token: forgotToken } = await forgotPasswordUseCase.execute({
+    const { code, id } = await forgotPasswordUseCase.execute({
       email: user.email,
     })
 
     const { token } = await verifyCodeForgotPasswordUseCase.execute({
       code,
-      token: forgotToken,
+      id,
     })
 
     expect(token).toEqual(expect.any(String))
@@ -59,7 +59,7 @@ describe('Forgot password Use Case', () => {
     await expect(
       verifyCodeForgotPasswordUseCase.execute({
         code: 'test',
-        token: 'teste',
+        id: 'teste',
       }),
     ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
@@ -70,14 +70,14 @@ describe('Forgot password Use Case', () => {
       name: 'Aldovani',
       password: '123456',
     })
-    const { token: forgotToken } = await forgotPasswordUseCase.execute({
+    const { id } = await forgotPasswordUseCase.execute({
       email: user.email,
     })
 
     await expect(
       verifyCodeForgotPasswordUseCase.execute({
         code: 'test',
-        token: forgotToken,
+        id,
       }),
     ).rejects.toBeInstanceOf(InvalidCodeError)
   })
@@ -90,7 +90,7 @@ describe('Forgot password Use Case', () => {
       name: 'Aldovani',
       password: '123456',
     })
-    const { code, token } = await forgotPasswordUseCase.execute({
+    const { code, id } = await forgotPasswordUseCase.execute({
       email: user.email,
     })
     vi.advanceTimersByTime(1000 * 60 * 61)
@@ -98,7 +98,7 @@ describe('Forgot password Use Case', () => {
     await expect(
       verifyCodeForgotPasswordUseCase.execute({
         code,
-        token,
+        id,
       }),
     ).rejects.toBeInstanceOf(ExpiredTokenError)
   })

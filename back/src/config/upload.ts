@@ -1,6 +1,19 @@
 import { resolve } from 'path'
-import util from 'util'
-import { pipeline } from 'stream'
+import multer from 'fastify-multer'
+import { randomUUID } from 'crypto'
 
-export const uploadFoder = resolve(__dirname, '..', '..', 'tmp')
-export const pump = util.promisify(pipeline)
+export const tmpFolder = resolve(__dirname, '..', '..', 'tmp')
+
+export const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './tmp')
+  },
+  filename: function (req, file, cb) {
+    const uuid = randomUUID()
+    cb(null, `${uuid}-${file.originalname}`)
+  },
+})
+export const upload = multer({
+  dest: '/tmp',
+  storage,
+})

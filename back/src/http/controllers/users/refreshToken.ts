@@ -5,12 +5,12 @@ export class RefreshTokenController {
     try {
       await req.refreshJwtVerify({ onlyCookie: true })
 
-      const { sub } = req.user
+      const { sub, role } = req.user
 
-      const token = await rep.accessJwtSign({}, { sign: { sub } })
+      const token = await rep.accessJwtSign({ role }, { sign: { sub } })
 
       const refreshToken = await rep.refreshJwtSign(
-        {},
+        { role },
         { sign: { sub, expiresIn: '15d' } },
       )
 

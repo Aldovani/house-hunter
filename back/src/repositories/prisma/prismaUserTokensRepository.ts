@@ -3,6 +3,14 @@ import { IUserTokensRepository } from '../IUserTokensRepository'
 import { prisma } from '../../libs/prisma'
 
 export class PrismaUserTokensRepository implements IUserTokensRepository {
+  async findById(id: string): Promise<UserTokens | null> {
+    return await prisma.userTokens.findUnique({
+      where: {
+        id,
+      },
+    })
+  }
+
   async updateValidatedAtByTokenId(
     tokenId: string,
     date: Date,

@@ -15,11 +15,11 @@ export class ForgotPasswordController {
     const forgotPasswordUseCase = container.resolve(ForgotPasswordUseCase)
 
     try {
-      const { code, token } = await forgotPasswordUseCase.execute({
+      await forgotPasswordUseCase.execute({
         email,
       })
 
-      return rep.status(201).send({ code, token })
+      return rep.status(201).send()
     } catch (err) {
       if (err instanceof ResourceNotFoundError) {
         return rep.status(404).send({ error: err.message })

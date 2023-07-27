@@ -1,6 +1,9 @@
 import fastifyJwt from '@fastify/jwt'
 import { SignerCallback, VerifierCallback } from 'fast-jwt'
 import 'fastify'
+import { File, FilesObject } from 'fastify-multer/lib/interfaces'
+import { isMultipart } from 'fastify-multer/lib/lib/content-parser'
+type FilesInRequest = FilesObject | Partial<File>[]
 
 declare module 'fastify' {
   export interface FastifyReply {
@@ -87,5 +90,9 @@ declare module 'fastify' {
       options: Partial<fastifyJwt.VerifyOptions>,
       callback: VerifierCallback,
     ): void
+
+    isMultipart: typeof isMultipart
+    file: File | undefined
+    files: FilesInRequest | undefined
   }
 }

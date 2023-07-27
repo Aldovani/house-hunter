@@ -47,6 +47,7 @@ export class UsersRepositoryInMemory implements IUsersRepository {
       password: data.password,
       created_at: new Date(),
       avatar: null,
+      role: 'MEMBER' as 'MEMBER' | 'ADMIN',
     }
 
     this.users.push(user)

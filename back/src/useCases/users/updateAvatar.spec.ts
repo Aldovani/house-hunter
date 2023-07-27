@@ -24,11 +24,11 @@ describe('Update avatar Use Case', () => {
       password: '12345',
     })
 
-    const { fileName } = await updateAvatarUseCase.execute({
-      fileName: 'test',
+    const { file } = await updateAvatarUseCase.execute({
+      file: 'test',
       userId: user.id,
     })
 
-    expect(fileName).toEqual(expect.any(String))
+    expect(file).toEqual(expect.any(String))
   })
 })

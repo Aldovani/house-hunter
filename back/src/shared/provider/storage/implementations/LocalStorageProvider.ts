@@ -1,40 +1,22 @@
-import fs, { createWriteStream } from 'fs'
-import { extname, resolve } from 'path'
+import fs from 'fs'
+import { resolve } from 'path'
 import { IStorageProvider } from '../IStorageProvider'
 import { injectable } from 'tsyringe'
-import { pump } from '../../../../config/upload'
-import { MultipartFile } from '@fastify/multipart'
-import { randomUUID } from 'crypto'
+import { tmpFolder } from '../../../../config/upload'
 
 @injectable()
 export class LocalStorageProvider implements IStorageProvider {
-  async save(upload: MultipartFile, folder: string): Promise<string> {
-    const fileId = randomUUID()
-    const extension = extname(upload.filename)
-
-    const fileName = fileId.concat(extension)
-
-    const writeStream = createWriteStream(
-      resolve(
-        __dirname,
-        '..',
-        '..',
-        '..',
-        '..',
-        '..',
-        'uploads',
-        folder,
-        fileName,
-      ),
+  async save(file: string, folder: string): Promise<string> {
+    await fs.promises.rename(
+      resolve(tmpFolder, file),
+      resolve(`${tmpFolder}/${folder}`, file),
     )
 
-    await pump(upload.file, writeStream)
-
-    return fileName
+    return file
   }
 
   async delete(file: string, folder: string): Promise<void> {
-    const fileName = resolve(`uploads/${folder}`, file)
+    const fileName = resolve(`${tmpFolder}/${folder}`, file)
     try {
       await fs.promises.stat(fileName)
     } catch {

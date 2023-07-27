@@ -9,7 +9,7 @@ interface ForgotPasswordUseCaseRequest {
   email: string
 }
 interface ForgotPasswordUseCaseResponse {
-  token: string
+  id: string
   code: string
 }
 
@@ -37,7 +37,7 @@ export class ForgotPasswordUseCase {
 
     const token = await hash(code, 6)
 
-    await this.userTokensRepository.create({
+    const { id } = await this.userTokensRepository.create({
       token,
       type_token: 'EMAIL_FORGOT_PASSWORD',
       user_id: user.id,
@@ -52,6 +52,6 @@ export class ForgotPasswordUseCase {
       `,
     })
 
-    return { token, code }
+    return { id, code }
   }
 }

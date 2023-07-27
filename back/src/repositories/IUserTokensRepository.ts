@@ -7,5 +7,6 @@ export interface IUserTokensRepository {
   ): Promise<UserTokens | null>
   create(data: Prisma.UserTokensUncheckedCreateInput): Promise<UserTokens>
   findByTokenAndType(token: string, type: TYPETOKEN): Promise<UserTokens | null>
+  findById(id: string): Promise<UserTokens | null>
   deleteTokenById(tokenId: string): Promise<void>
 }

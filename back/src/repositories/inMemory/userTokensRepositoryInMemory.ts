@@ -36,6 +36,18 @@ export class UserTokensRepositoryInMemory implements IUserTokensRepository {
     return token
   }
 
+  async findById(id: string) {
+    const userToken = this.userTokens.find(
+      (item) => item.id === id && item.validated_at === null,
+    )
+
+    if (!userToken) {
+      return null
+    }
+
+    return userToken
+  }
+
   async findByTokenAndType(token: string, type: TYPETOKEN) {
     const userToken = this.userTokens.find(
       (item) =>

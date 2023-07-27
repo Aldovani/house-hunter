@@ -9,6 +9,7 @@ import { UpdateAvatarController } from '../controllers/users/updateAvatar'
 import { AuthenticateController } from '../controllers/users/authenticate'
 import { ensuredAuth } from '../middlewares/ensuredAuth'
 import { RefreshTokenController } from '../controllers/users/refreshToken'
+import { upload } from '../../config/upload'
 
 const createUserController = new CreateUserController()
 const updateUserController = new UpdateUserController()
@@ -28,13 +29,13 @@ export async function usersRoutes(app: FastifyInstance) {
 
   app.put(
     '/users/avatar',
-    { onRequest: [ensuredAuth] },
+    { onRequest: [ensuredAuth, upload.single('avatar')] },
     updateAvatarController.handle,
   )
 
   app.post('/forgot-password', forgotPasswordController.handle)
-  app.post('/change-password/:token', changePasswordController.handle)
   app.post('/forgot-password/verify', verifyCodeForgotPasswordController.handle)
+  app.post('/change-password/:token', changePasswordController.handle)
 
   app.post('/auth', authenticateController.handle)
   app.patch('/token/refresh', refreshTokenController.handle)

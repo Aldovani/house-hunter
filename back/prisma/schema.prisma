@@ -11,62 +11,94 @@ datasource db {
 }
 
 enum STATUS {
-  DONE
-  OPEN
+  PENDING
+  ACCEPTED
+  CANCELED
+}
+
+enum Role {
+  ADMIN
+  MEMBER
 }
 
 enum TYPETOKEN {
-  REFRESH
   TOKEN_FORGOT_PASSWORD
   EMAIL_FORGOT_PASSWORD
 }
 
 model User {
-  id         String   @id @default(uuid())
-  email      String   @unique
-  password   String
-  name       String
-  created_at DateTime @default(now())
-  avatar     String?
-
+  id          String        @id @default(uuid())
+  email       String        @unique
+  password    String
+  name        String
+  created_at  DateTime      @default(now())
+  avatar      String?
+  role        Role          @default(MEMBER)
   House       House[]
   Appointment Appointment[]
   usersToken  UserTokens[]
+
+  @@map("users")
 }
 
 model House {
-  id             String   @id @default(uuid())
-  created_at     DateTime @default(now())
-  title          String
+  id          String  @id @default(uuid())
+  title       String
+  rent_price  Decimal @db.Decimal(9, 2)
+  buy_price   Decimal @db.Decimal(9, 2)
+  description String  @db.VarChar(300)
+
   longitude      Decimal
   latitude       Decimal
-  address        String   @db.VarChar(60)
-  buy_price      Float
-  rent_price     Float
-  description    String   @db.VarChar(300)
-  state          String
+  address        String  @db.VarChar(60)
   city           String
+  state          String
+  district       String
   address_number Int
+  available      Boolean @default(false)
 
-  owner    User   @relation(fields: [owner_id], references: [id])
+  created_at DateTime @default(now())
+
+  owner    User   @relation(fields: [owner_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   owner_id String
 
   house_room  HouseRoom[]
   appointment Appointment[]
 
-  contact Contact[]
+  contact    Contact[]
+  HouseImage HouseImage[]
 
-  @@map("users")
+  @@map("houses")
+}
+
+model HouseImage {
+  id   String @id @default(uuid())
+  name String
+
+  house_id String
+  house    House  @relation(fields: [house_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("house_images")
+}
+
+model Category {
+  id      String    @id @default(uuid())
+  name    String    @unique
+  Contact Contact[]
+
+  @@map("categories")
 }
 
 model Contact {
-  id    String @id @default(uuid())
-  type  String
   value String
 
-  house    House  @relation(fields: [house_id], references: [id])
-  house_id String
+  house_id    String
+  category_id String
 
+  type  Category @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  house House    @relation(fields: [house_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@id([house_id, category_id])
   @@map("contacts")
 }
 
@@ -82,9 +114,9 @@ model Room {
 model HouseRoom {
   quantity Int
 
-  house    House  @relation(fields: [house_id], references: [id])
+  house    House  @relation(fields: [house_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   house_id String
-  room     Room   @relation(fields: [room_id], references: [id])
+  room     Room   @relation(fields: [room_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   room_id  String
 
   @@id([house_id, room_id])
@@ -92,15 +124,16 @@ model HouseRoom {
 }
 
 model Appointment {
+  id         String   @id @default(uuid())
   created_at DateTime @default(now())
-  status     STATUS   @default(OPEN)
+  status     STATUS   @default(PENDING)
 
-  house    House  @relation(fields: [house_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  house_id String
-  owner    User   @relation(fields: [owner_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  owner_id String
+  appointment_date DateTime
+  house            House    @relation(fields: [house_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  house_id         String
+  user             User     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user_id          String
 
-  @@id([house_id, owner_id])
   @@map("appointments")
 }
 
