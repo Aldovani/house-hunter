@@ -1,3 +1,4 @@
 node_modules
-uploads/avatar/*
+tmp
 .env
+.vscode
