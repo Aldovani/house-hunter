@@ -1,0 +1,35 @@
+.title {
+  color: $gray-color-900;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 130%;
+}
+.description {
+  color: $gray-color-400;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 120%;
+  margin: 0.8rem 0 4rem;
+}
+
+.form {
+  label {
+    margin-top: 1.6rem;
+  }
+  > button {
+    margin-top: 2rem;
+  }
+}
+
+.link {
+  margin-top: 2rem;
+  color: $gray-color-400;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: center;
+  padding-bottom: 3rem;
+
+  a {
+    color: $primary-color-500;
+  }
+}

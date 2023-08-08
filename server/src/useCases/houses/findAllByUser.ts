@@ -14,7 +14,7 @@ export class FindAllByUserHouseUseCase {
   constructor(
     @inject('HousesRepository')
     private housesRepository: IHousesRepository,
-  ) { }
+  ) {}
 
   async execute({
     userId,

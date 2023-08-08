@@ -1,57 +1,44 @@
 import { Contact } from '@prisma/client'
-import {
-  CreateOrUpdateContactDTO,
-  IContactsRepository,
-} from '../IContactsRepository'
+import { ContactDTO, IContactsRepository } from '../IContactsRepository'
 import { prisma } from '../../libs/prisma'
 
 export class PrismaContactsRepository implements IContactsRepository {
   async createOrUpdate({
-    category_id,
-    house_id,
-    value,
-  }: CreateOrUpdateContactDTO): Promise<Contact> {
+    cellphone,
+    houseId,
+    email,
+    facebook,
+    phone,
+  }: ContactDTO): Promise<Contact> {
     const contact = await prisma.contact.upsert({
       create: {
-        value,
-        category_id,
-        house_id,
+        email,
+        facebook,
+        phone,
+        house_id: houseId,
+        cellphone,
       },
       update: {
-        value,
+        email,
+        facebook,
+        phone,
+        cellphone,
       },
       where: {
-        house_id_category_id: {
-          category_id,
-          house_id,
-        },
+        house_id: houseId,
       },
     })
 
     return contact
   }
 
-  async removeByHouseIdAndCategoryId(
-    houseId: string,
-    categoryId: string,
-  ): Promise<void> {
-    await prisma.contact.delete({
-      where: {
-        house_id_category_id: {
-          category_id: categoryId,
-          house_id: houseId,
-        },
-      },
-    })
-  }
-
-  async findManyByHouseId(houseId: string): Promise<Contact[]> {
-    const contacts = await prisma.contact.findMany({
+  async findByHouseId(houseId: string): Promise<Contact | null> {
+    const contact = await prisma.contact.findFirst({
       where: {
         house_id: houseId,
       },
     })
 
-    return contacts
+    return contact
   }
 }

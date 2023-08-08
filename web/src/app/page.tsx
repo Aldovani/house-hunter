@@ -1,95 +1,156 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Link from 'next/link'
+import styles from './page.module.scss'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <>
+      <header className={`${styles.container} ${styles.header}`}>
+        <h2 className={styles.logo}>House-Hunter</h2>
+        <Link href="/auth/login" className={styles.button}>
+          Entrar
+        </Link>
+      </header>
+      <div className={styles['bg-hero']}></div>
+
+      <div className={`${styles.main} ${styles.container}`}>
+        <h1>
+          A caça à casa <span>perfeita</span> nunca foi tão fácil.
+        </h1>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+          Encontre a casa dos seus sonhos em nossa plataforma intuitiva e
+          amigável. Experimente agora!
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+        <Link href="/maps">Procurar</Link>
+      </div>
+
+      <section className={styles.services}>
+        <div className={styles.container}>
+          <div>
+            <h2 className={styles.subtitle}>
+              Descubra como nosso serviço pode transformar sua <span>vida</span>
+            </h2>
+            <p>
+              Com o House-Hunter, você encontra o imóvel ideal em três passos
+              simples: pesquise, filtre e agende uma visita. Explore as opções
+              de imóveis disponíveis e encontre a casa dos seus sonhos hoje
+              mesmo.
+            </p>
+            <p>
+              Encontre sua casa dos sonhos hoje mesmo!
+              <Link href="/maps">Comece agora</Link>.
+            </p>
+          </div>
+          <div className={styles.images}>
+            <div className={styles.image}></div>
+            <div className={styles.image}></div>
+            <div className={styles.image}></div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className={`${styles.container} ${styles.benefits}`}>
+        <div className={styles.images}>
+          <div className={styles.image}></div>
+          <div className={styles.image}></div>
+          <div className={styles.image}></div>
+          <div className={styles.image}></div>
+        </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
+        <div className={styles.content}>
+          <h2 className={styles.subtitle}>
+            conheça os <span>benefícios</span> do nosso serviço de busca
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+          <div>
+            <div className={styles.benefit}>
+              <div>
+                <div className={styles.icon}>
+                  <img src="/assets/icons/clock.svg" alt="" />
+                </div>
+                <h5>Economize tempo</h5>
+              </div>
+              <p>pesquise, filtre e agende visitas com apenas alguns cliques</p>
+            </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+            <div className={styles.benefit}>
+              <div>
+                <div className={styles.icon}>
+                  <img src="/assets/icons/shield.svg" alt="" />
+                </div>
+                <h5>Confiança</h5>
+              </div>
+              <p>
+                conte com um serviço confiável e seguro para encontrar o imóvel
+                ideal para você
+              </p>
+            </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <div className={styles.benefit}>
+              <div>
+                <div className={styles.icon}>
+                  <img src="/assets/icons/smile.svg" alt="" />
+                </div>
+                <h5>Facilidade de uso</h5>
+              </div>
+              <p>
+                interface intuitiva e fácil de usar para que você encontre o que
+                precisa rapidamente
+              </p>
+            </div>
+
+            <div className={styles.benefit}>
+              <div>
+                <div className={styles.icon}>
+                  <img src="/assets/icons/list.svg" alt="" />
+                </div>
+                <h5>Opções personalizadas</h5>
+              </div>
+              <p>
+                escolha filtros específicos para encontrar o imóvel perfeito
+                para você
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.houses}>
+        <div className={styles.container}>
+          <div className={styles.content}>
+            <h2 className={styles.subtitle}>
+              Casas <span>Incríveis</span> à sua Escolha!
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Reprehenderit, earum. Libero esse cumque accusamus minima unde
+              debitis recusandae vel commodi quaerat optio?
+            </p>
+          </div>
+
+          <div className={styles.images}>
+            <div className={styles.image} />
+            <div className={styles.image} />
+            <div className={styles.image} />
+          </div>
+        </div>
+      </section>
+
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <h3 className={styles.logo}>House-hunter</h3>
+          <span>
+            feito com 💙 por{' '}
+            <Link target="_blank" href="http://aldovani.github.io/portfolio">
+              aldovani
+            </Link>
+          </span>
+
+          <div>
+            <Link href="https://linkedin.com/in/aldovani">Linkedin</Link>
+            <Link href="https://github.com/aldovani">Github</Link>
+          </div>
+        </div>
+      </footer>
+    </>
   )
 }

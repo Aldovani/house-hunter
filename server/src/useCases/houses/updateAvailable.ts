@@ -62,11 +62,9 @@ export class UpdateAvailableHouseUseCase {
       houseErrors.push('rooms is required')
     }
 
-    const houseContacts = await this.contactsRepository.findManyByHouseId(
-      houseId,
-    )
+    const houseContacts = await this.contactsRepository.findByHouseId(houseId)
 
-    if (houseContacts.length === 0) {
+    if (!houseContacts?.cellphone) {
       houseErrors.push('contacts is required')
     }
 

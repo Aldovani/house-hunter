@@ -1,29 +1,29 @@
 import { Contact } from '@prisma/client'
 import { randomUUID } from 'crypto'
-import {
-  CreateOrUpdateContactDTO,
-  IContactsRepository,
-} from '../IContactsRepository'
+import { ContactDTO, IContactsRepository } from '../IContactsRepository'
 
 export class ContactsRepositoryInMemory implements IContactsRepository {
   private contacts: Contact[] = []
 
   async createOrUpdate({
-    category_id,
-    house_id,
-    value,
-  }: CreateOrUpdateContactDTO): Promise<Contact> {
+    houseId,
+    cellphone,
+    email,
+    facebook,
+    phone,
+  }: ContactDTO): Promise<Contact> {
     const contactIndex = this.contacts.findIndex(
-      (contact) =>
-        contact.house_id === house_id && contact.category_id === category_id,
+      (contact) => contact.house_id === houseId,
     )
 
     if (contactIndex < 0) {
       const contact = {
-        house_id,
         id: randomUUID(),
-        category_id,
-        value,
+        house_id: houseId,
+        cellphone,
+        email: email || null,
+        facebook: facebook || null,
+        phone: phone || null,
       }
 
       this.contacts.push(contact)
@@ -32,9 +32,12 @@ export class ContactsRepositoryInMemory implements IContactsRepository {
     }
 
     const contact: Contact = {
-      category_id,
-      house_id,
-      value,
+      id: randomUUID(),
+      house_id: houseId,
+      cellphone,
+      email: email || null,
+      facebook: facebook || null,
+      phone: phone || null,
     }
 
     this.contacts[contactIndex] = contact
@@ -42,23 +45,14 @@ export class ContactsRepositoryInMemory implements IContactsRepository {
     return contact
   }
 
-  async removeByHouseIdAndCategoryId(
-    houseId: string,
-    categoryId: string,
-  ): Promise<void> {
-    const contacts = this.contacts.filter(
-      (contact) =>
-        contact.house_id !== houseId && contact.category_id !== categoryId,
-    )
-
-    this.contacts = contacts
-  }
-
-  async findManyByHouseId(houseId: string): Promise<Contact[]> {
-    const contacts = this.contacts.filter(
+  async findByHouseId(houseId: string): Promise<Contact | null> {
+    const contact = this.contacts.find(
       (contact) => contact.house_id === houseId,
     )
+    if (!contact) {
+      return null
+    }
 
-    return contacts
+    return contact
   }
 }

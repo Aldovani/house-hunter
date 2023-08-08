@@ -10,6 +10,7 @@ import { AuthenticateController } from '../controllers/users/authenticate'
 import { ensuredAuth } from '../middlewares/ensuredAuth'
 import { RefreshTokenController } from '../controllers/users/refreshToken'
 import { upload } from '../../config/upload'
+import { DeleteAvatarController } from '../controllers/users/deleteAvatar'
 
 const createUserController = new CreateUserController()
 const updateUserController = new UpdateUserController()
@@ -17,6 +18,7 @@ const getUserProfileController = new GetUserProfileController()
 const forgotPasswordController = new ForgotPasswordController()
 const changePasswordController = new ChangePasswordController()
 const updateAvatarController = new UpdateAvatarController()
+const deleteAvatarController = new DeleteAvatarController()
 const verifyCodeForgotPasswordController =
   new VerifyCodeForgotPasswordController()
 const authenticateController = new AuthenticateController()
@@ -31,6 +33,11 @@ export async function usersRoutes(app: FastifyInstance) {
     '/users/avatar',
     { onRequest: [ensuredAuth, upload.single('avatar')] },
     updateAvatarController.handle,
+  )
+  app.delete(
+    '/users/avatar',
+    { onRequest: [ensuredAuth] },
+    deleteAvatarController.handle,
   )
 
   app.post('/forgot-password', forgotPasswordController.handle)

@@ -54,9 +54,8 @@ describe('Update Status use Case', () => {
     await houseImagesRepositoryInMemory.save('123456', 'filename test')
 
     await contactsRepositoryInMemory.createOrUpdate({
-      category_id: 'email',
-      house_id: '123456',
-      value: 'test@gamil.com',
+      houseId: '123456',
+      cellphone: '16994175820',
     })
 
     const { status } = await updateStatusHouseUseCase.execute({

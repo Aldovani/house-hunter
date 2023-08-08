@@ -1,0 +1,22 @@
+.header {
+  border-bottom: 1px solid #e2e8f0;
+  position: fixed;
+  background: $gray-color-000;
+  width: 100%;
+  z-index: 5;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 32px;
+  max-width: calc(100% + 64px);
+}
+
+.logo {
+  color: $primary-color-500;
+  font-size: 2.4rem;
+  font-weight: 700;
+}

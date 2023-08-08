@@ -1,0 +1,35 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="24" height="24" fill="#1E1E1E"/>
+<g id="Pendding">
+<path d="M-2208 -2821C-2208 -2906.05 -2139.05 -2975 -2054 -2975H14962C15047.1 -2975 15116 -2906.05 15116 -2821V8364C15116 8449.05 15047.1 8518 14962 8518H-2054C-2139.05 8518 -2208 8449.05 -2208 8364V-2821Z" fill="#F59E0B" fill-opacity="0.1"/>
+<g id="Home" clip-path="url(#clip0_6_3)">
+<rect width="1440" height="2765" transform="translate(-744 -1483)" fill="#F1F5F9"/>
+<rect id="Rectangle 69" x="-744" y="-252" width="1440" height="731" fill="#F8FAFC"/>
+<g id="Group 107">
+<g id="Group 106">
+<g id="Frame 234">
+<g id="Frame 232">
+<g id="Frame 128">
+<g id="Frame 228">
+<g id="Group 70">
+<rect id="Rectangle 40" x="-8" y="-8" width="40" height="40" rx="4" fill="#DBEAFE"/>
+<g id="clock">
+<path id="Vector" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#2563EB" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M12 6V12L16 14" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<path d="M-2054 -2974H14962V-2976H-2054V-2974ZM15115 -2821V8364H15117V-2821H15115ZM14962 8517H-2054V8519H14962V8517ZM-2207 8364V-2821H-2209V8364H-2207ZM-2054 8517C-2138.5 8517 -2207 8448.5 -2207 8364H-2209C-2209 8449.6 -2139.6 8519 -2054 8519V8517ZM15115 8364C15115 8448.5 15046.5 8517 14962 8517V8519C15047.6 8519 15117 8449.6 15117 8364H15115ZM14962 -2974C15046.5 -2974 15115 -2905.5 15115 -2821H15117C15117 -2906.6 15047.6 -2976 14962 -2976V-2974ZM-2054 -2976C-2139.6 -2976 -2209 -2906.6 -2209 -2821H-2207C-2207 -2905.5 -2138.5 -2974 -2054 -2974V-2976Z" fill="white" fill-opacity="0.1"/>
+</g>
+<defs>
+<clipPath id="clip0_6_3">
+<rect width="1440" height="2765" fill="white" transform="translate(-744 -1483)"/>
+</clipPath>
+</defs>
+</svg>

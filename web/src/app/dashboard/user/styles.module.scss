@@ -1,0 +1,105 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  padding: 3.2rem 0 3rem 6.4rem;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 1.6rem;
+  h4 {
+    color: $gray-color-900;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  p {
+    color: #94a3b8;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0.4rem 0 1.2rem;
+  }
+  img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+  }
+  .wrapperButtons {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  label,
+  button {
+    display: inline-flex;
+    padding: 0.8rem 1.2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+
+    border-radius: 0.8rem;
+    border: 1px solid #cbd5e1;
+
+    color: #94a3b8;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    cursor: pointer;
+  }
+  button {
+    color: #f43f5e;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.config {
+  padding: 3.2rem 0 3rem 6.4rem;
+  border-bottom: 1px solid #e2e8f0;
+  h2 {
+    color: #1e293b;
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  form {
+    max-width: 926px;
+    width: 100%;
+  }
+
+  .containerInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 40px;
+  }
+
+  label[for='email'] {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  form > button {
+    max-width: 160px;
+    margin-top: 24px;
+  }
+}
+
+.deleteAccount {
+  padding: 3.2rem 0 4rem 6.4rem;
+  h2 {
+    color: #1e293b;
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+  p {
+    color: #94a3b8;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0.8rem 0 1.6rem;
+  }
+
+  button {
+    color: #f43f5e;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1.2rem 0.8rem;
+  }
+}

@@ -65,8 +65,8 @@ model House {
   house_room  HouseRoom[]
   appointment Appointment[]
 
-  contact    Contact[]
   HouseImage HouseImage[]
+  contact    Contact?
 
   @@map("houses")
 }
@@ -81,24 +81,16 @@ model HouseImage {
   @@map("house_images")
 }
 
-model Category {
-  id      String    @id @default(uuid())
-  name    String    @unique
-  Contact Contact[]
-
-  @@map("categories")
-}
-
 model Contact {
-  value String
+  id        String  @id @default(uuid())
+  cellphone String
+  facebook  String?
+  email     String?
+  phone     String?
 
-  house_id    String
-  category_id String
+  House    House  @relation(fields: [house_id], references: [id])
+  house_id String @unique
 
-  type  Category @relation(fields: [category_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  house House    @relation(fields: [house_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  @@id([house_id, category_id])
   @@map("contacts")
 }
 

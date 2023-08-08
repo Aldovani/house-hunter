@@ -1,16 +1,14 @@
 import { Contact } from '@prisma/client'
 
-export interface CreateOrUpdateContactDTO {
-  category_id: string
-  house_id: string
-  value: string
+export interface ContactDTO {
+  houseId: string
+  cellphone: string
+  phone?: string
+  email?: string
+  facebook?: string
 }
 
 export interface IContactsRepository {
-  createOrUpdate(data: CreateOrUpdateContactDTO): Promise<Contact>
-  removeByHouseIdAndCategoryId(
-    houseId: string,
-    categoryId: string,
-  ): Promise<void>
-  findManyByHouseId(houseId: string): Promise<Contact[]>
+  createOrUpdate(data: ContactDTO): Promise<Contact>
+  findByHouseId(houseId: string): Promise<Contact | null>
 }
