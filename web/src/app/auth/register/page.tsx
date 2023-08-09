@@ -50,22 +50,18 @@ export default function RegisterUser() {
         </Input.Label>
 
         <Input.Label id="password" name="Senha" isError={!!errors?.password}>
-          <Input.ContainerIcons>
-            <Input.Field
-              id="password"
-              type={!inputPasswordIcon ? 'password' : 'text'}
-              placeholder="••••••••••••••••"
-              {...register('password')}
-            />
+          <Input.Field
+            id="password"
+            type={!inputPasswordIcon ? 'password' : 'text'}
+            placeholder="••••••••••••••••"
+            {...register('password')}
+          >
             <Input.Icon
               handleClick={handleToggleIconInput}
               icon={!inputPasswordIcon ? FiEye : FiEyeOff}
             />
-            <Input.Icon
-              handleClick={handleToggleIconInput}
-              icon={!inputPasswordIcon ? FiEye : FiEyeOff}
-            />
-          </Input.ContainerIcons>
+          </Input.Field>
+
           <Input.Error message={errors.password?.message} />
         </Input.Label>
 
@@ -74,18 +70,18 @@ export default function RegisterUser() {
           name="confirmar senha"
           isError={!!errors?.confirmPassword}
         >
-          <Input.ContainerIcons>
-            <Input.Field
-              id="confirmPassword"
-              type={!inputPasswordIcon ? 'password' : 'text'}
-              placeholder="••••••••••••••••"
-              {...register('confirmPassword')}
-            />
+          <Input.Field
+            id="confirmPassword"
+            type={!inputPasswordIcon ? 'password' : 'text'}
+            placeholder="••••••••••••••••"
+            {...register('confirmPassword')}
+          >
             <Input.Icon
               handleClick={handleToggleIconInput}
               icon={!inputPasswordIcon ? FiEye : FiEyeOff}
             />
-          </Input.ContainerIcons>
+          </Input.Field>
+
           <Input.Error message={errors.confirmPassword?.message} />
         </Input.Label>
 

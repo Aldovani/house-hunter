@@ -41,18 +41,17 @@ export default function Login() {
         </Input.Label>
 
         <Input.Label id="password" name="Senha" isError={!!errors.password}>
-          <Input.ContainerIcons>
-            <Input.Field
-              id="password"
-              type={!inputPasswordIcon ? 'password' : 'text'}
-              placeholder="••••••••••••••••"
-              {...register('password')}
-            />
+          <Input.Field
+            id="password"
+            type={!inputPasswordIcon ? 'password' : 'text'}
+            placeholder="••••••••••••••••"
+            {...register('password')}
+          >
             <Input.Icon
               handleClick={handleToggleIconInput}
               icon={!inputPasswordIcon ? FiEye : FiEyeOff}
             />
-          </Input.ContainerIcons>
+          </Input.Field>
           <Input.Error message={errors.password?.message} />
         </Input.Label>
 

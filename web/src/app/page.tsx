@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './page.module.scss'
-
+import { FiSmile, FiShield, FiClock, FiList } from 'react-icons/fi'
 export default function Home() {
   return (
     <>
@@ -65,7 +65,7 @@ export default function Home() {
             <div className={styles.benefit}>
               <div>
                 <div className={styles.icon}>
-                  <img src="/assets/icons/clock.svg" alt="" />
+                  <FiClock size={24} color="#2563EB" />
                 </div>
                 <h5>Economize tempo</h5>
               </div>
@@ -75,7 +75,7 @@ export default function Home() {
             <div className={styles.benefit}>
               <div>
                 <div className={styles.icon}>
-                  <img src="/assets/icons/shield.svg" alt="" />
+                  <FiShield size={24} color="#2563EB" />
                 </div>
                 <h5>Confiança</h5>
               </div>
@@ -88,7 +88,7 @@ export default function Home() {
             <div className={styles.benefit}>
               <div>
                 <div className={styles.icon}>
-                  <img src="/assets/icons/smile.svg" alt="" />
+                  <FiSmile size={24} color="#2563EB" />
                 </div>
                 <h5>Facilidade de uso</h5>
               </div>
@@ -101,7 +101,7 @@ export default function Home() {
             <div className={styles.benefit}>
               <div>
                 <div className={styles.icon}>
-                  <img src="/assets/icons/list.svg" alt="" />
+                  <FiList size={24} color="#2563EB" />
                 </div>
                 <h5>Opções personalizadas</h5>
               </div>

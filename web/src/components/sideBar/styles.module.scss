@@ -10,4 +10,8 @@
   gap: 6.4rem;
   padding-top: 6.4rem;
   z-index: 1;
+
+  svg:hover {
+    color: $primary-color-500 !important;
+  }
 }

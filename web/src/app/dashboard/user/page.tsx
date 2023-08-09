@@ -39,16 +39,14 @@ export default function UserDashboard() {
             </Input.Label>
 
             <Input.Label name="Senha" id="password" isError={false}>
-              <Input.ContainerIcons>
-                <Input.Field id="password" />
-
+              <Input.Field id="password">
                 <Input.Icon
                   icon={FiEye}
                   handleClick={() => {
                     console.log('')
                   }}
                 />
-              </Input.ContainerIcons>
+              </Input.Field>
             </Input.Label>
 
             <Input.Label
@@ -56,15 +54,14 @@ export default function UserDashboard() {
               id="confirmPassword"
               isError={false}
             >
-              <Input.ContainerIcons>
-                <Input.Field id="confirmPassword" />
+              <Input.Field id="confirmPassword">
                 <Input.Icon
                   icon={FiEye}
                   handleClick={() => {
                     console.log('')
                   }}
                 />
-              </Input.ContainerIcons>
+              </Input.Field>
             </Input.Label>
           </div>
           <Button>Alterar dados</Button>

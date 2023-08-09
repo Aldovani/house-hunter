@@ -1,13 +1,20 @@
-import { InputHTMLAttributes, Ref, forwardRef } from 'react'
+import { InputHTMLAttributes, ReactNode, Ref, forwardRef } from 'react'
 import styles from './styles.module.scss'
 
-type InputFieldProps = InputHTMLAttributes<HTMLInputElement>
+type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
+  children?: ReactNode
+}
 
 export const InputField = forwardRef(function (
-  { ...props }: InputFieldProps,
+  { children, ...props }: InputFieldProps,
   ref: Ref<HTMLInputElement> | null,
 ) {
-  return <input ref={ref} className={styles.field} {...props} />
+  return (
+    <div className={styles.containerIcons}>
+      <input ref={ref} className={styles.field} {...props} />
+      {children}
+    </div>
+  )
 })
 
 InputField.displayName = 'InputField'

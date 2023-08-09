@@ -1,9 +1,9 @@
-import { InputContainerIcons } from './InputContainerIcons'
 import { InputError } from './InputError'
 import { InputField } from './InputField'
 import { InputIcon } from './InputIcon'
 import { InputLabel } from './InputLabel'
 import { InputPin } from './InputPin'
+import { InputTextAreaField } from './InputextArea'
 
 export const Input = {
   Field: InputField,
@@ -11,5 +11,5 @@ export const Input = {
   Icon: InputIcon,
   Label: InputLabel,
   Pin: InputPin,
-  ContainerIcons: InputContainerIcons,
+  Area: InputTextAreaField,
 }

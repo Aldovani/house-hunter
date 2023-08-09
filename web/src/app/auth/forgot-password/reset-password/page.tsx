@@ -29,18 +29,17 @@ export default function ResetPassword() {
         className={styles.form}
       >
         <Input.Label id="password" name="Senha" isError={false}>
-          <Input.ContainerIcons>
-            <Input.Field
-              type={!passwordIcon ? 'password' : 'text'}
-              id="password"
-              placeholder="••••••••••••••••"
-              {...register('password')}
-            />
+          <Input.Field
+            type={!passwordIcon ? 'password' : 'text'}
+            id="password"
+            placeholder="••••••••••••••••"
+            {...register('password')}
+          >
             <Input.Icon
               handleClick={togglePasswordIcon}
               icon={!passwordIcon ? FiEye : FiEyeOff}
             />
-          </Input.ContainerIcons>
+          </Input.Field>
           <Input.Error message={errors.password?.message} />
         </Input.Label>
 
@@ -49,18 +48,18 @@ export default function ResetPassword() {
           name="Confirmar senha"
           isError={false}
         >
-          <Input.ContainerIcons>
-            <Input.Field
-              type={!confirmPasswordIcon ? 'password' : 'text'}
-              id="confirmPassword"
-              placeholder="••••••••••••••••"
-              {...register('confirmPassword')}
-            />
+          <Input.Field
+            type={!confirmPasswordIcon ? 'password' : 'text'}
+            id="confirmPassword"
+            placeholder="••••••••••••••••"
+            {...register('confirmPassword')}
+          >
             <Input.Icon
               handleClick={toggleConfirmPasswordIcon}
               icon={!confirmPasswordIcon ? FiEye : FiEyeOff}
             />
-          </Input.ContainerIcons>
+          </Input.Field>
+
           <Input.Error message={errors.confirmPassword?.message} />
         </Input.Label>
         <Button type="submit">Atualizar senha</Button>
