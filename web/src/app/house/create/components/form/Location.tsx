@@ -4,7 +4,7 @@ export function Location() {
   return (
     <>
       <h2>Agora confirme as informações referente a residência</h2>
-      <form className={`${styles.form} `}>
+      <form className={`${styles.form} ${styles.location}`}>
         <Input.Label name="Estado" id="state" isError={false}>
           <Input.Field />
           <Input.Error message="" />
@@ -19,6 +19,12 @@ export function Location() {
           <Input.Field />
           <Input.Error message="" />
         </Input.Label>
+
+        <Input.Label name="Numero" id="addressNumber" isError={false}>
+          <Input.Field />
+          <Input.Error message="" />
+        </Input.Label>
+
 
         <Input.Label name="Bairro" id="district" isError={false}>
           <Input.Field />

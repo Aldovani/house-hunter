@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styles from './styles.module.scss'
 import { Principal } from './components/form/Principal'
 import { Location } from './components/form/Location'
+import { Contact } from './components/form/Contact'
 export default function CreateHouse() {
   return (
     <>
@@ -12,8 +13,9 @@ export default function CreateHouse() {
         </Link>
       </header>
       <main className={styles.container}>
-        <Principal />
+      <Principal />
         <Location />
+        <Contact />
       </main>
 
       <footer className={styles.footer}>
