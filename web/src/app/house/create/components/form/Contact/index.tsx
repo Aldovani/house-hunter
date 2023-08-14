@@ -24,8 +24,6 @@ export function Contact() {
           <Input.Field />
           <Input.Error message="" />
         </Input.Label>
-
-
       </form>
     </>
   )

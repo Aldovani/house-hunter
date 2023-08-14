@@ -1,0 +1,16 @@
+.form {
+  display: grid;
+  gap: 2.4rem 3.2rem;
+  padding-bottom: 14rem;
+}
+
+
+
+.location {
+  grid-template-columns: 1fr 1fr;
+
+  label[for='district'] {
+    grid-column: 1/3;
+  }
+}
+

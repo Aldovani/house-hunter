@@ -36,6 +36,8 @@
   height: 0.5rem;
 
   .progressBar {
+    transition: all 0.3s ease;
+
     width: 20%;
     height: 0.5rem;
     background: #2563eb;

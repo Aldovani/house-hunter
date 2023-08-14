@@ -15,7 +15,8 @@ html {
   }
 }
 
-input {
+input,
+textarea {
   font-family: var(--poppins-font);
 }
 
@@ -29,6 +30,11 @@ button {
 body {
   color: $gray-color-900;
   background: $gray-color-000;
+
+  .leaflet-div-icon{
+    border-radius: 50%;
+    outline: 0;
+  }
 }
 
 ul,

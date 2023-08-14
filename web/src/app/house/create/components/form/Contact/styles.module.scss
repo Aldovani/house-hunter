@@ -1,0 +1,11 @@
+.form {
+  display: grid;
+  gap: 2.4rem 3.2rem;
+  padding-bottom: 14rem;
+}
+
+
+.contacts {
+  grid-template-columns: 1fr 1fr;
+}
+

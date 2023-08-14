@@ -15,7 +15,8 @@
     span {
       color: $dangerous-color-500;
     }
-    .field {
+    .field,
+    .textareaField {
       color: $dangerous-color-500;
       border-color: $dangerous-color-500;
       background: rgb(244, 63, 94, 0.05);
@@ -30,7 +31,8 @@
   }
 
   &:not(.error) {
-    input:where(:focus, :hover) {
+    .field:where(:focus, :hover),
+    .textareaField:where(:focus, :hover) {
       border-color: $primary-color-500;
       background: rgb(37, 99, 235, 0.05);
     }
@@ -49,7 +51,8 @@
   }
 }
 .field,
-.pin {
+.pin,
+.textareaField {
   width: 100%;
   display: block;
   padding: 1.2rem 0rem 1.2rem 2rem;
@@ -96,11 +99,6 @@
 }
 
 .textareaField {
-  width: 100%;
   min-height: 12.4rem;
-  padding: 1.2rem 0rem 1.2rem 2rem;
-  border-radius: 0.4rem;
-  border: 1px solid #e2e8f0;
-  background: #f1f5f9;
   resize: vertical;
 }

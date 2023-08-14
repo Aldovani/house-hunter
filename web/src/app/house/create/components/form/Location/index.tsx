@@ -25,7 +25,6 @@ export function Location() {
           <Input.Error message="" />
         </Input.Label>
 
-
         <Input.Label name="Bairro" id="district" isError={false}>
           <Input.Field />
           <Input.Error message="" />
