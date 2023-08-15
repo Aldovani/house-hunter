@@ -19,13 +19,13 @@ interface House {
   buyPrice?: number
   rentPrice?: number
   location?: {
-    latitude: number
-    longitude: number
-    state: string
-    city: string
-    address: string
-    addressNumber: number
-    district: string
+    latitude?: number
+    longitude?: number
+    state?: string
+    city?: string
+    address?: string
+    addressNumber?: number
+    district?: string
   }
   contact?: Contacts
 }

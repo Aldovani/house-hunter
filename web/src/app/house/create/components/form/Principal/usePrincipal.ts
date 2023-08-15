@@ -8,10 +8,10 @@ export function usePrincipal() {
 
   const principalDataHouseSchema = z
     .object({
-      title: z.string().min(10),
+      title: z.string().min(1),
       buyPrice: z.coerce.number().min(0).optional(),
       rentPrice: z.coerce.number().min(0).optional(),
-      description: z.string().min(50),
+      description: z.string().min(1),
     })
     .superRefine(({ buyPrice, rentPrice }, ctx) => {
       if (!buyPrice && !rentPrice) {

@@ -3,8 +3,7 @@ import { Skeleton } from '@/components/skeleton'
 import styles from './styles.module.scss'
 import dynamic from 'next/dynamic'
 import { MapEvent } from '@/components/map/Event'
-import { useState } from 'react'
-import { Location } from '@/components/map'
+import { useMapPicker } from './useMapPicker'
 
 const Map = dynamic(() => import('@/components/map'), {
   ssr: false,
@@ -12,25 +11,24 @@ const Map = dynamic(() => import('@/components/map'), {
 })
 
 export function MapPicker() {
-  const [position, setPosition] = useState<Location[] | undefined>(undefined)
+  const { handleSubmit, position, handleClickPosition } = useMapPicker()
 
   return (
     <>
       <h2>Agora selecione no mapa a localização da residência</h2>
-      <div className={styles.containerMap}>
+      <form
+        id="house-1"
+        onSubmit={handleSubmit}
+        className={styles.containerMap}
+      >
         <Map markers={position}>
           <MapEvent
-            click={(e) => {
-              setPosition([
-                {
-                  lat: e.latlng.lat,
-                  lnt: e.latlng.lng,
-                },
-              ])
+            click={({ latlng: { lat, lng } }) => {
+              handleClickPosition(lat, lng)
             }}
           />
         </Map>
-      </div>
+      </form>
     </>
   )
 }

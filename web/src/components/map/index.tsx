@@ -5,7 +5,7 @@ import { MarkerPoint } from './Marker'
 
 export interface Location {
   lat: number
-  lnt: number
+  lng: number
 }
 
 interface MapProps {
@@ -35,7 +35,7 @@ const Map = ({ children, markers }: MapProps) => {
       {children}
 
       {markers?.map((marker, idx) => (
-        <MarkerPoint key={idx} lat={marker.lat} lng={marker.lnt} />
+        <MarkerPoint key={idx} lat={marker.lat} lng={marker.lng} />
       ))}
 
       <TileLayer
