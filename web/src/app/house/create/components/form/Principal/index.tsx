@@ -6,8 +6,7 @@ import styles from './styles.module.scss'
 import { usePrincipal } from './usePrincipal'
 
 export function Principal() {
-  const { house, onHandleSubmit, errors, handleSubmit, register } =
-    usePrincipal()
+  const { onHandleSubmit, errors, handleSubmit, register } = usePrincipal()
 
   return (
     <>
@@ -24,7 +23,6 @@ export function Principal() {
             id="title"
             placeholder="Digite um titulo para seu imovel"
             {...register('title')}
-            value={house?.title}
           />
           <Input.Error message={errors.title?.message} />
         </Input.Label>
@@ -39,7 +37,6 @@ export function Principal() {
             id="rent"
             placeholder="$"
             {...register('buyPrice')}
-            value={house?.buyPrice}
           />
           <Input.Error message={errors.buyPrice?.message} />
         </Input.Label>
@@ -54,7 +51,6 @@ export function Principal() {
             id="buy"
             placeholder="$"
             {...register('rentPrice')}
-            value={house?.rentPrice}
           />
           <Input.Error message={errors.rentPrice?.message} />
         </Input.Label>
@@ -68,7 +64,6 @@ export function Principal() {
             id="description"
             placeholder="Descrição"
             {...register('description')}
-            value={house?.description}
           />
           <Input.Error message={errors.description?.message} />
         </Input.Label>

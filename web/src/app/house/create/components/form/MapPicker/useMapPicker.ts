@@ -5,13 +5,14 @@ import { Location } from '@/components/map'
 export function useMapPicker() {
   const { updateHouseData, handleNextFormStep, house } = useCreateHouse()
   const [position, setPosition] = useState<Location[] | undefined>(() => {
-    if (!house?.location?.latitude && !house?.location?.longitude) {
+    const latitude = house?.location?.latitude
+    const longitude = house?.location?.longitude
+
+    if (!latitude || !longitude) {
       return undefined
     }
 
-    const { latitude, longitude } = house.location
-
-    return [{ lat: latitude!, lng: longitude! }]
+    return [{ lat: latitude, lng: longitude }]
   })
 
   function handleClickPosition(lat: number, lng: number) {
@@ -30,6 +31,7 @@ export function useMapPicker() {
 
     updateHouseData({
       location: {
+        ...house?.location,
         latitude: position[0].lat,
         longitude: position[0].lng,
       },

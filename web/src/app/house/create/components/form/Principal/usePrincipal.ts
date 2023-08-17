@@ -37,6 +37,12 @@ export function usePrincipal() {
   } = useForm<principalData>({
     resolver: zodResolver(principalDataHouseSchema),
     mode: 'onSubmit',
+    defaultValues: {
+      buyPrice: house?.buyPrice,
+      description: house?.description,
+      rentPrice: house?.rentPrice,
+      title: house?.title,
+    },
   })
 
   const onHandleSubmit: SubmitHandler<principalData> = (data) => {

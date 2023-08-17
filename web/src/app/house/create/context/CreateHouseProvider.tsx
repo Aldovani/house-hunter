@@ -1,16 +1,11 @@
 'use client'
 import { ReactNode, createContext, useContext, useState } from 'react'
 
-interface Room {
-  name: string
-  id: string
-}
-
 interface Contacts {
-  Facebook: string
-  phone: string
-  cellPhone: string
-  email: string
+  cellphone: string
+  facebook?: string
+  phone?: string
+  email?: string
 }
 
 interface House {
@@ -27,13 +22,15 @@ interface House {
     addressNumber?: number
     district?: string
   }
-  contact?: Contacts
 }
 
 interface CreateHouseContextValues {
   house: House | null
-  rooms: Room[] | null
+  rooms: string[] | null
+  contacts: Contacts | null
   updateHouseData(data: Partial<House>): void
+  updateContact(data: Contacts): void
+  updateRooms(id: string): void
   handlePrevFormStep(): void
   handleNextFormStep(): void
   formStep: number
@@ -48,7 +45,8 @@ const CreateHouseContext = createContext({} as CreateHouseContextValues)
 
 export function CreateHouseProvider({ children }: CreateHouseProviderProps) {
   const [house, setHouse] = useState<House | null>(null)
-  const [rooms, setRooms] = useState<Room[] | null>(null)
+  const [contacts, setContacts] = useState<Contacts | null>(null)
+  const [rooms, setRooms] = useState<string[] | null>(null)
   const [formStep, setFormStep] = useState(0)
   const [progressBar, setProgressBar] = useState(0)
 
@@ -78,6 +76,30 @@ export function CreateHouseProvider({ children }: CreateHouseProviderProps) {
       }
     })
   }
+  function updateContact(data: Contacts) {
+    setContacts((prevState) => {
+      return {
+        ...prevState,
+        ...data,
+      }
+    })
+  }
+
+  function updateRooms(id: string) {
+    setRooms((prev) => {
+      if (!prev) {
+        return [id]
+      }
+
+      if (!prev.find((roomId) => roomId === id)) {
+        return [...prev, id]
+      }
+
+      const newRooms = prev.filter((roomId) => roomId !== id)
+
+      return newRooms
+    })
+  }
 
   return (
     <CreateHouseContext.Provider
@@ -89,6 +111,9 @@ export function CreateHouseProvider({ children }: CreateHouseProviderProps) {
         handleNextFormStep,
         formStep,
         progressBar,
+        updateContact,
+        contacts,
+        updateRooms,
       }}
     >
       {children}
@@ -105,16 +130,21 @@ export function useCreateHouse() {
     handleNextFormStep,
     handlePrevFormStep,
     progressBar,
+    contacts,
+    updateContact,
+    updateRooms,
   } = useContext(CreateHouseContext)
 
   return {
     house,
     rooms,
-
     updateHouseData,
     formStep,
     handleNextFormStep,
     handlePrevFormStep,
     progressBar,
+    updateRooms,
+    contacts,
+    updateContact,
   }
 }

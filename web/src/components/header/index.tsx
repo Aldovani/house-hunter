@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link className={styles.logo} href={'/map'}>
+        <Link className={styles.logo} href={'/maps'}>
           House-Hunter
         </Link>
 

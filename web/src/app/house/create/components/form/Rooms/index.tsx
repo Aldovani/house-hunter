@@ -1,99 +1,18 @@
 import styles from './styles.module.scss'
+import { ListRooms } from '../../ListRooms'
+import { useRooms } from './useRooms'
 
 export function Rooms() {
+  const { handleSubmit, myRooms } = useRooms()
   return (
     <>
       <h2>Informe o que sua residência tem para oferecer</h2>
-      <form className={styles.containerRooms}>
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
-
-        <label htmlFor="quarto" className={styles.labelRoom}>
-          <span>Quarto</span>
-          <input type="checkbox" name="rooms" id="quarto" />
-        </label>
+      <form
+        id="house-1"
+        onSubmit={handleSubmit}
+        className={styles.containerRooms}
+      >
+        <ListRooms rooms={myRooms} />
       </form>
     </>
   )
