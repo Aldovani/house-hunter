@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 
-import Header from '@/components/header/index'
+import Header from '@/components/Header/index'
 
 import Image from 'node_modules/next/image'
 

@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import { Input } from '@/components/input'
+import { Input } from '@/components/Input'
 import { useContact } from './useContact'
 export function Contact() {
   const { errors, handleSubmit, onHandleSubmit, register } = useContact()

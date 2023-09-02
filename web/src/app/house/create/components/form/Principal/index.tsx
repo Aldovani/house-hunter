@@ -1,5 +1,5 @@
 'use client'
-import { Input } from '@/components/input'
+import { Input } from '@/components/Input'
 
 import styles from './styles.module.scss'
 
@@ -55,6 +55,18 @@ export function Principal() {
           <Input.Error message={errors.rentPrice?.message} />
         </Input.Label>
 
+        <Input.Label
+          name="Descrição"
+          id="description"
+          isError={!!errors.description}
+        >
+          <Input.Area
+            id="description"
+            placeholder="Descrição"
+            {...register('description')}
+          />
+          <Input.Error message={errors.description?.message} />
+        </Input.Label>
         <Input.Label
           name="Descrição"
           id="description"

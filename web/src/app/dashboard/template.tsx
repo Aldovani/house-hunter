@@ -3,8 +3,8 @@
 import { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
 
-import Header from '@/components/header'
-import { SideBar } from '@/components/sideBar'
+import Header from '@/components/Header'
+import { SideBar } from '@/components/SideBar'
 
 import styles from './styles.module.scss'
 

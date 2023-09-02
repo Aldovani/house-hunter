@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import { Input } from '@/components/input'
+import { Input } from '@/components/Input'
 import { useLocation } from './useLocation'
 export function Location() {
   const { errors, handleSubmit, onHandleSubmit, register } = useLocation()

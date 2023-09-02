@@ -20,13 +20,12 @@ export default function CreateHouse() {
         </Link>
       </header>
       <main className={styles.container}>
-        {/* {formStep === 0 && <Principal />} */}
-        {/* {formStep === 1 && <MapPicker />} */}
-        {/* {formStep === 2 && <Location />} */}
-        {/* {formStep === 3 && <Contact />} */}
-        {/* {formStep === 4 && <Rooms />} */}
-        {/* {formStep === 5 && <UploadImage />} */}
-        <UploadImage />
+        {formStep === 0 && <Principal />}
+        {formStep === 1 && <MapPicker />}
+        {formStep === 2 && <Location />}
+        {formStep === 3 && <Contact />}
+        {formStep === 4 && <Rooms />}
+        {formStep === 5 && <UploadImage />}
       </main>
 
       <footer className={styles.footer}>

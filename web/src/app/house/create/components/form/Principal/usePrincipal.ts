@@ -8,10 +8,12 @@ export function usePrincipal() {
 
   const principalDataHouseSchema = z
     .object({
-      title: z.string().min(1),
+      title: z
+        .string()
+        .min(20, { message: 'O titulo deve conter pelo menos 20 caracteres' }),
       buyPrice: z.coerce.number().min(0).optional(),
       rentPrice: z.coerce.number().min(0).optional(),
-      description: z.string().min(1),
+      description: z.string().min(1, { message: 'test' }),
     })
     .superRefine(({ buyPrice, rentPrice }, ctx) => {
       if (!buyPrice && !rentPrice) {

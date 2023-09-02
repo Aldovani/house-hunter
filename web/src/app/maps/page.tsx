@@ -3,14 +3,14 @@
 
 import { FiSliders } from 'react-icons/fi'
 
-import Header from '@/components/header'
+import Header from '@/components/Header'
 import dynamic from 'next/dynamic'
 
 import styles from './styles.module.scss'
-import { Skeleton } from '@/components/skeleton'
+import { Skeleton } from '@/components/Skeleton'
 import { useState } from 'react'
 
-const Map = dynamic(() => import('../../components/map'), {
+const Map = dynamic(() => import('../../components/Map'), {
   ssr: false,
   loading: () => <Skeleton />,
 })

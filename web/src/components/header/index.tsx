@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import styles from './styles.module.scss'
 
-import { MenuHeader } from './menu'
+import { MenuHeader } from './Menu'
 
 export default function Header() {
   return (

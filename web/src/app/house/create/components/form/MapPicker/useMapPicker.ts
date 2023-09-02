@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useCreateHouse } from '../../../context/CreateHouseProvider'
-import { Location } from '@/components/map'
+import { Location } from '@/components/Map'
 
 export function useMapPicker() {
   const { updateHouseData, handleNextFormStep, house } = useCreateHouse()

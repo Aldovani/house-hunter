@@ -1,11 +1,11 @@
 'use client'
-import { Skeleton } from '@/components/skeleton'
+import { Skeleton } from '@/components/Skeleton'
 import styles from './styles.module.scss'
 import dynamic from 'next/dynamic'
-import { MapEvent } from '@/components/map/Event'
+import { MapEvent } from '@/components/Map/Event'
 import { useMapPicker } from './useMapPicker'
 
-const Map = dynamic(() => import('@/components/map'), {
+const Map = dynamic(() => import('@/components/Map'), {
   ssr: false,
   loading: () => <Skeleton />,
 })

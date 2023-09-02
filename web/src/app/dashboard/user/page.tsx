@@ -2,9 +2,9 @@
 
 import { FiEye } from 'react-icons/fi'
 
-import { Input } from '@/components/input'
+import { Input } from '@/components/Input'
 import styles from './styles.module.scss'
-import { Button } from '@/components/button'
+import { Button } from '@/components/Button'
 
 export default function UserDashboard() {
   return (

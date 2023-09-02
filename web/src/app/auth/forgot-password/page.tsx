@@ -1,8 +1,8 @@
 'use client'
 
 import styles from '../page.module.scss'
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
+import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 import { useForgotPassword } from './useForgotPassword'
 
 export default function ForgotPassword() {

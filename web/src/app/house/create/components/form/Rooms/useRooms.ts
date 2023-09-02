@@ -7,7 +7,7 @@ export function useRooms() {
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
-    if (rooms?.length === 0) {
+    if (rooms?.length === 0 || !rooms) {
       return
     }
     handleNextFormStep()

@@ -2,8 +2,8 @@
 import Link from 'next/link'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
+import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 import styles from './styles.module.scss'
 import authStyles from '../page.module.scss'
 
