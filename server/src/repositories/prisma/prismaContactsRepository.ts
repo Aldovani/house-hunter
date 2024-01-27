@@ -10,6 +10,7 @@ export class PrismaContactsRepository implements IContactsRepository {
     facebook,
     phone,
   }: ContactDTO): Promise<Contact> {
+    prisma.user.aggregate({})
     const contact = await prisma.contact.upsert({
       create: {
         email,

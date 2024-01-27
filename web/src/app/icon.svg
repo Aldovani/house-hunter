@@ -1,0 +1,26 @@
+<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_di_1912_133)">
+<rect x="1" y="1" width="40" height="40" rx="8" fill="#4338CA"/>
+<rect x="1.58824" y="1.58824" width="38.8235" height="38.8235" rx="7.41176" stroke="#F8FAFC" stroke-width="1.17647"/>
+<path d="M12.4297 18.143L21.0011 11.4763L29.5725 18.143V28.6192C29.5725 29.1243 29.3719 29.6088 29.0147 29.966C28.6574 30.3233 28.173 30.5239 27.6678 30.5239H14.3344C13.8293 30.5239 13.3448 30.3233 12.9876 29.966C12.6304 29.6088 12.4297 29.1243 12.4297 28.6192V18.143Z" stroke="#F8FAFC" stroke-width="1.90476" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.1406 30.5238V21H23.8549V30.5238" stroke="#F8FAFC" stroke-width="1.90476" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<filter id="filter0_di_1912_133" x="0.285714" y="0.285714" width="41.4286" height="45" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="0.714286" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1912_133"/>
+<feOffset/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.192157 0 0 0 0 0.180392 0 0 0 0 0.505882 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1912_133"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1912_133" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4.28571"/>
+<feGaussianBlur stdDeviation="5.21429"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.145098 0 0 0 0 0.388235 0 0 0 0 0.921569 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_1912_133"/>
+</filter>
+</defs>
+</svg>

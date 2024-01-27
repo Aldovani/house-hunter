@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { ReactNode } from 'react'
-import { MarkerPoint } from './Marker'
+import { MarkerPoint } from '../map/Marker'
 
 export interface Location {
   lat: number
@@ -23,13 +23,12 @@ const Map = ({ children, markers }: MapProps) => {
     <MapContainer
       center={[-21.520844, -48.392082]}
       zoom={15}
+      zoomControl={false}
       style={{
+        position: 'absolute',
         width: '100%',
         height: '100%',
-        position: 'sticky',
-        top: 0,
       }}
-      zoomControl={false}
     >
       <ZoomControl position="bottomright" />
       {children}

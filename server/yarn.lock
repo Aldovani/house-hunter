@@ -324,22 +324,46 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@prisma/client@^4.14.1":
-  version "4.14.1"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.14.1.tgz#61720f385f687f7e88de41fccade1ed62be57a54"
-  integrity sha512-TZIswkeX1ccsHG/eN2kICzg/csXll0osK3EHu1QKd8VJ3XLcXozbNELKkCNfsCUvKJAwPdDtFCzF+O+raIVldw==
+"@prisma/client@5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-5.7.1.tgz#a124afd05663267f7255a639a81d28303684a063"
+  integrity sha512-TUSa4nUcC4nf/e7X3jyO1pEd6XcI/TLRCA0KjkA46RDIpxUaRsBYEOqITwXRW2c0bMFyKcCRXrH4f7h4q9oOlg==
+
+"@prisma/debug@5.8.0-dev.38":
+  version "5.8.0-dev.38"
+  resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-5.8.0-dev.38.tgz#4c6116220cac2d7a5a87b85958bcf0101c67e15c"
+  integrity sha512-NR6lrzsdayXOS1XN1Z/hxYQ+rEgZ3VMOuMndFSI/lmnLzYmZyU2u1wOy8G8lCIJnMwm5gHVNYhmDkecBJbLmiQ==
+
+"@prisma/engines-version@5.8.0-21.e78ce01346936f624c1ca1f087385a25ee17b5bb":
+  version "5.8.0-21.e78ce01346936f624c1ca1f087385a25ee17b5bb"
+  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-5.8.0-21.e78ce01346936f624c1ca1f087385a25ee17b5bb.tgz#9dc95d03261047c18c66b2ade5077b43966884bf"
+  integrity sha512-A51D2Ib5d0SNW39xmE17oP7vU90ZGFk+eckGijhm6V/85FO/2Ogx8yj53/hK/CfcGH3P8iaBwIPKsxZ60BN5aw==
+
+"@prisma/engines@5.8.0-dev.38":
+  version "5.8.0-dev.38"
+  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-5.8.0-dev.38.tgz#8cdabb917cfdd83e4ad663b5f0f76e372fb3e518"
+  integrity sha512-kIbnQW+P9R3vluDS4FN2Umc383tkVPULzF2XLDcavlBQ1sVar1AVfWNyhVYFw1Sh0S/j0CvkY4cBxPfsBv2w8w==
   dependencies:
-    "@prisma/engines-version" "4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c"
+    "@prisma/debug" "5.8.0-dev.38"
+    "@prisma/engines-version" "5.8.0-21.e78ce01346936f624c1ca1f087385a25ee17b5bb"
+    "@prisma/fetch-engine" "5.8.0-dev.38"
+    "@prisma/get-platform" "5.8.0-dev.38"
 
-"@prisma/engines-version@4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c":
-  version "4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c"
-  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c.tgz#0aeca447c4a5f23c83f68b8033e627b60bc01850"
-  integrity sha512-3jum8/YSudeSN0zGW5qkpz+wAN2V/NYCQ+BPjvHYDfWatLWlQkqy99toX0GysDeaUoBIJg1vaz2yKqiA3CFcQw==
+"@prisma/fetch-engine@5.8.0-dev.38":
+  version "5.8.0-dev.38"
+  resolved "https://registry.yarnpkg.com/@prisma/fetch-engine/-/fetch-engine-5.8.0-dev.38.tgz#9ccc04803415d0ef5419917841c295605661454c"
+  integrity sha512-ZmRyAG+jxaRZAyrUmkgFyyKAfQZrBR4in9ViWDdRqOys8bwt1/WuFWtpVUikjj/DJF1birnGKkWjMjHig2mQ2w==
+  dependencies:
+    "@prisma/debug" "5.8.0-dev.38"
+    "@prisma/engines-version" "5.8.0-21.e78ce01346936f624c1ca1f087385a25ee17b5bb"
+    "@prisma/get-platform" "5.8.0-dev.38"
 
-"@prisma/engines@4.16.2":
-  version "4.16.2"
-  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-4.16.2.tgz#5ec8dd672c2173d597e469194916ad4826ce2e5f"
-  integrity sha512-vx1nxVvN4QeT/cepQce68deh/Turxy5Mr+4L4zClFuK1GlxN3+ivxfuv+ej/gvidWn1cE1uAhW7ALLNlYbRUAw==
+"@prisma/get-platform@5.8.0-dev.38":
+  version "5.8.0-dev.38"
+  resolved "https://registry.yarnpkg.com/@prisma/get-platform/-/get-platform-5.8.0-dev.38.tgz#33b364a77df1a5d9ed04404dd27398d76e0fc5f4"
+  integrity sha512-Jz6cMf8v9ArBEgaNe3aNxvIb4EY760g5xK4HSVnOdy8RIljN3L3JWWNdF3uSJSbo6Ol1g40/O1SQAVaSsF3OxQ==
+  dependencies:
+    "@prisma/debug" "5.8.0-dev.38"
 
 "@rocketseat/eslint-config@1.2.0":
   version "1.2.0"
@@ -2560,12 +2584,12 @@ pretty-format@^29.5.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-prisma@^4.14.1:
-  version "4.16.2"
-  resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.16.2.tgz#469e0a0991c6ae5bcde289401726bb012253339e"
-  integrity sha512-SYCsBvDf0/7XSJyf2cHTLjLeTLVXYfqp7pG5eEVafFLeT0u/hLFz/9W196nDRGUOo1JfPatAEb+uEnTQImQC1g==
+prisma@5.8.0-dev.38:
+  version "5.8.0-dev.38"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-5.8.0-dev.38.tgz#148ef1cdffdad65c7d827d6d2fd340942e26bfaa"
+  integrity sha512-m3qPi/adeoZuXjUNl0nhzmGiJyd29sNW5qbbwmOaJ/lPIFvKR4s9MUW0EGd54IKexvpn49kZfITyMp9DBq557g==
   dependencies:
-    "@prisma/engines" "4.16.2"
+    "@prisma/engines" "5.8.0-dev.38"
 
 process-warning@^2.0.0, process-warning@^2.2.0:
   version "2.2.0"

@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { FiMenu, FiUser } from 'react-icons/fi'
-import styles from './styles.module.scss'
+import { Menu, User } from 'lucide-react'
 import Link from 'next/link'
 
 export function MenuHeader() {
@@ -12,33 +11,33 @@ export function MenuHeader() {
   }
 
   return (
-    <nav
-      className={styles.container}
-      onMouseLeave={() => {
-        if (isMenuOpen) handleToggleIsMenuOpen()
-      }}
-    >
+    <div className="flex gap-2 items-center relative border border-slate-200 rounded-full p-3 px-4">
       <button onClick={handleToggleIsMenuOpen}>
-        <FiMenu size={24} />
+        <Menu size={24} />
       </button>
 
-      <Link href="/auth/login" data-sass-classname="user">
-        <FiUser size={20} />
+      <Link href="/sign-in">
+        <User size={20} />
       </Link>
 
-      <div className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
-        <ul>
+      <nav
+        data-is-open={isMenuOpen}
+        className="transition-all data-[is-open='true']:-bottom-2 data-[is-open='true']:opacity-100 data-[is-open='true']:pointer-events-auto opacity-0 pointer-events-none shadow-sm overflow-hidden  absolute bg-slate-50 border border-slate-2 rounded-lg -bottom-4 right-0 translate-y-full"
+      >
+        <ul className="flex flex-col   ">
           <li>
-            <Link href={'/maps'}>Mapa</Link>
+            <Link className="pr-20 pç" href="/houses">
+              Mapa
+            </Link>
           </li>
           <li>
-            <Link href={'/auth/register'}>Registar-se</Link>
+            <Link href={'/register'}>Registar-se</Link>
           </li>
           <li>
-            <Link href={'/auth/login'}>Entrar</Link>
+            <Link href={'/sign-in'}>Entrar</Link>
           </li>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </div>
   )
 }

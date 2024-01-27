@@ -21,7 +21,7 @@ export class ChangeStatusAppointmentUseCase {
     private appointmentsRepository: IAppointmentsRepository,
     @inject('HousesRepository')
     private HousesRepository: IHousesRepository,
-  ) {}
+  ) { }
 
   async execute({
     appointmentId,
